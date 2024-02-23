@@ -1,12 +1,8 @@
 import { FormControl } from "@chakra-ui/form-control";
-import {
-  Input,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import Send from "@mui/icons-material/Send";
-import {  Box, Text } from "@chakra-ui/layout";
+import { Box, Text } from "@chakra-ui/layout";
 import "./styles.css";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
@@ -22,10 +18,10 @@ import backgroundImage from "../img/img.jpg";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-
-const ENDPOINT = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
-  : "https://chat-mind-production.up.railway.app/";
+const ENDPOINT = "http://localhost:5000";
+// const ENDPOINT = window.location.hostname === "localhost"
+//   ? "http://localhost:5000"
+//   : "https://chat-mind-production.up.railway.app/";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -64,7 +60,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       const config = {
         headers: {
-         "Content-type": "application/json",
+          "Content-type": "application/json",
         },
       };
 
@@ -90,8 +86,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
- 
-// sendMessage is used to send message on clicking send button
+  // sendMessage is used to send message on clicking send button
   const sendMessage = async (event) => {
     if (newMessage && event.key === "Enter") {
       socket.emit("stop typing", selectedChat._id);
@@ -193,11 +188,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             fontFamily="Work sans"
             d="flex"
             fontWeight={800}
-              textShadow="2px 2px 8px rgba(0, 0, 0, 0.6)"
+            textShadow="2px 2px 8px rgba(0, 0, 0, 0.6)"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
-          
-            
           >
             <IconButton
               bg="linear-gradient(147.14deg, #FF3B3B 6.95%, #6600CC 93.05%);"
@@ -285,8 +278,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     bg: "#1C1C28",
                   }}
                   pr="4rem"
-                  pb="0" 
-                 
+                  pb="0"
                 />
                 <InputRightElement width="4rem">
                   <IconButton
