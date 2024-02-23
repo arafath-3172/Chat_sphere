@@ -61,7 +61,7 @@ Download and install Node.js from the official website: [https://nodejs.org](htt
 
 ## Getting Started 🎯
 
-To get started with ChatMind, follow these steps:
+To get started with ChatSphere, follow these steps:
 
 1. Fork and clone the repository from GitHub:
 
