@@ -7,7 +7,7 @@ function HomePage() {
 
   return (
     <>
-      <MetaData title="ChatMind | Home" />
+      <MetaData title="ChatSphere | Home" />
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="#">

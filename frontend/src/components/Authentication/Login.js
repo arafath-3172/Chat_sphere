@@ -15,39 +15,39 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import HomePage from "../../Pages/Homepage";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
-import { useHistory , Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
 import Loader from "../layouts/Loader";
 const Login = () => {
- const classes = useStyles();
- const [showPassword, setShowPassword] = useState(false);
- const [email, setEmail] = useState("");
- const [password, setPassword] = useState("");
- const [isValidEmail, setIsValidEmail] = useState(true);
+  const classes = useStyles();
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(true);
   // const [loading, setLoading] = useState(false);
   const toast = useToast();
   const history = useHistory();
-const { isAuth ,setIsAuth } = ChatState();
- const handleEmailChange = (event) => {
-   const newEmail = event.target.value;
-   setEmail(newEmail);
-   setIsValidEmail(
-     newEmail !== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)
-   );
- };
+  const { isAuth, setIsAuth } = ChatState();
+  const handleEmailChange = (event) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+    setIsValidEmail(
+      newEmail !== "" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)
+    );
+  };
 
- const handlePasswordChange = (event) => {
-   setPassword(event.target.value);
- };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
- const handleShowPasswordClick = () => {
-   setShowPassword(!showPassword);
- };
+  const handleShowPasswordClick = () => {
+    setShowPassword(!showPassword);
+  };
 
- const isSignInDisabled = !(email && password && isValidEmail);
+  const isSignInDisabled = !(email && password && isValidEmail);
 
   const submitHandler = async () => {
- setIsAuth(true);
+    setIsAuth(true);
     if (!email || !password) {
       toast({
         title: "Please Fill all the Feilds",
@@ -74,7 +74,6 @@ const { isAuth ,setIsAuth } = ChatState();
         config
       );
 
-   
       toast({
         title: "Login Successful",
         status: "success",
@@ -83,13 +82,12 @@ const { isAuth ,setIsAuth } = ChatState();
         position: "bottom",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
-         setTimeout(() => {
+      setTimeout(() => {
         setIsAuth(false);
         history.push("/chats");
-         }, 2000);
-      
+      }, 2000);
     } catch (error) {
-       setIsAuth(false);
+      setIsAuth(false);
       toast({
         title: "Error Occured!",
         description: error.response.statusText,
@@ -97,13 +95,11 @@ const { isAuth ,setIsAuth } = ChatState();
         duration: 5000,
         isClosable: true,
         position: "bottom",
-        
       });
       // setLoading(false);
     }
   };
 
- 
   return (
     <>
       <HomePage />
@@ -170,8 +166,8 @@ const { isAuth ,setIsAuth } = ChatState();
               variant="body2"
               className={classes.termsAndConditionsText}
             >
-              I accept the ChatSphere Terms of Use and acknowledge ChatSphere will
-              use my information in accordance with its
+              I accept the ChatSphere Terms of Use and acknowledge ChatSphere
+              will use my information in accordance with its
               <Link to="#" className={classes.privacyText}>
                 Privacy Policy.
               </Link>
